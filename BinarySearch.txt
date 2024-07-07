@@ -1,27 +1,22 @@
-function binarySearch(arr, target){
-    let middleElement=arr[arr.length/2];
-    let middleIndex= arr.indexOf(middleElement);
-     if (target===middleElement){
-         return middleIndex;
+function BinarySearch(arr,t){
+    let leftIndex=0;
+    let rightIndex=arr.length-1;
+    
+    while(leftIndex<=rightIndex){
+        let middleIndex=Math.floor((leftIndex+rightIndex)/2);
+        if(t===arr[middleIndex]){
+            return middleIndex;
         }
-        else if(target<middleElement){
-            for(let i=0; i<middleIndex; i++){
-                if(arr[i]===target){
-                    return i;
-                }
-            }
+        if(t<arr[middleIndex]){
+            rightIndex=middleIndex-1;
         }
-        
         else{
-            for(let i=middleIndex+1; i<arr.length; i++){
-                if(arr[i]===target){
-                    return i
-                }
-            }
+            leftIndex=middleIndex+1;
         }
-        return -1;
+    }
+    return -1;
 }
 
-console.log(binarySearch([1,2,3,4,5,6,7,8], 5));
- 
+console.log(BinarySearch([1,2,3,4,5,6,7,8,9],5));
+
 //4
